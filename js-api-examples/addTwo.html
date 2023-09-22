@@ -1,0 +1,26 @@
+<!doctype html>
+
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <title>WASM test2</title>
+  </head>
+
+  <body>
+    <script>
+
+      fetch("addTwo.wasm").then(response =>
+        response.arrayBuffer()
+      ).then(bytes =>
+        WebAssembly.instantiate(bytes)
+      ).then(result => {
+        const addTwo = result.instance.exports.addTwo;
+        for (let i = 0; i < 10; i++) {
+          console.log(addTwo(i, i));
+        }
+      });
+    </script>
+  </body>
+
+</html>
