@@ -18,6 +18,7 @@
       };
 
       fetch("simple.wasm").then(response =>
+      // fetch("test.wasm").then(response =>
         response.arrayBuffer()
       ).then(bytes =>
         WebAssembly.instantiate(bytes, importObject)
